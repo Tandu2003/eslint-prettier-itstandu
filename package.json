@@ -1,6 +1,6 @@
 {
   "name": "eslint-prettier-itstandu",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "All-in-one ESLint + Prettier config for NestJS, Next.js, React, Vite projects",
   "main": "index.js",
   "files": [
