@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "All-in-one ESLint + Prettier config for NestJS, Next.js, React, Vite projects",
   "main": "index.js",
-  "files": ["index.js", "prettier.json"],
+  "files": [
+    "index.js",
+    "prettier.json"
+  ],
   "license": "MIT",
   "author": "Tandu2003 <tandu542003@gmail.com>",
   "repository": {
@@ -19,17 +22,17 @@
     "lint": "eslint . --ext .js,.ts,.tsx"
   },
   "dependencies": {
-    "eslint": "^9.0.0",
-    "prettier": "^3.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.0.0",
-    "@typescript-eslint/parser": "^8.0.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-import": "^2.29.0",
-    "eslint-plugin-prettier": "^5.0.0",
-    "eslint-plugin-react": "^7.34.0",
-    "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "@ianvs/prettier-plugin-sort-imports": "^4.0.0",
-    "prettier-plugin-tailwindcss": "^0.6.0"
+    "eslint": "^9.36.0",
+    "prettier": "^3.6.2",
+    "@typescript-eslint/eslint-plugin": "^8.45.0",
+    "@typescript-eslint/parser": "^8.45.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^6.1.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
+    "prettier-plugin-tailwindcss": "^0.6.14"
   }
 }

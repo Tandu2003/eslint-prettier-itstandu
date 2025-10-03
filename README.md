@@ -8,6 +8,7 @@ Một package cấu hình ESLint và Prettier toàn diện cho các dự án Nes
 ## ✨ Tính năng
 
 ### 🔧 ESLint Configuration
+
 - **TypeScript Support**: Cấu hình đầy đủ cho TypeScript với các quy tắc nghiêm ngặt
 - **React Support**: Hỗ trợ React và React Hooks với các quy tắc accessibility
 - **Import Management**: Tự động sắp xếp và kiểm tra import statements
@@ -15,6 +16,7 @@ Một package cấu hình ESLint và Prettier toàn diện cho các dự án Nes
 - **Prettier Integration**: Tích hợp Prettier để tránh xung đột formatting
 
 ### 🎨 Prettier Configuration
+
 - **Import Sorting**: Tự động sắp xếp import theo thứ tự logic
 - **Tailwind CSS**: Hỗ trợ Tailwind CSS với plugin chuyên dụng
 - **Consistent Formatting**: Quy tắc formatting nhất quán cho toàn bộ dự án
@@ -47,7 +49,7 @@ Tạo file `.eslintrc.js` trong thư mục root của dự án:
 
 ```javascript
 module.exports = {
-  extends: ["eslint-prettier-itstandu"]
+  extends: ['eslint-prettier-itstandu'],
 };
 ```
 
@@ -83,6 +85,7 @@ Tạo file `.prettierrc.json` trong thư mục root của dự án:
 ### Next.js / React
 
 **package.json:**
+
 ```json
 {
   "scripts": {
@@ -95,45 +98,49 @@ Tạo file `.prettierrc.json` trong thư mục root của dự án:
 ```
 
 **.eslintrc.js:**
+
 ```javascript
 module.exports = {
-  extends: ["eslint-prettier-itstandu"],
+  extends: ['eslint-prettier-itstandu'],
   rules: {
     // Thêm quy tắc tùy chỉnh nếu cần
-  }
+  },
 };
 ```
 
 ### NestJS
 
 **.eslintrc.js:**
+
 ```javascript
 module.exports = {
-  extends: ["eslint-prettier-itstandu"],
+  extends: ['eslint-prettier-itstandu'],
   rules: {
     // Tắt một số quy tắc cho NestJS
-    "class-methods-use-this": "off",
-    "@typescript-eslint/no-empty-function": "off"
-  }
+    'class-methods-use-this': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+  },
 };
 ```
 
 ### Vite + React
 
 **.eslintrc.js:**
+
 ```javascript
 module.exports = {
-  extends: ["eslint-prettier-itstandu"],
+  extends: ['eslint-prettier-itstandu'],
   env: {
     browser: true,
-    es2020: true
-  }
+    es2020: true,
+  },
 };
 ```
 
 ## 📋 Quy tắc ESLint được bao gồm
 
 ### TypeScript Rules (Nghiêm ngặt)
+
 - ✅ `@typescript-eslint/no-non-null-assertion`: Cấm sử dụng `!`
 - ✅ `@typescript-eslint/no-explicit-any`: Cấm sử dụng `any`
 - ✅ `@typescript-eslint/no-floating-promises`: Phát hiện promise không được handle
@@ -144,11 +151,13 @@ module.exports = {
 - ✅ `@typescript-eslint/explicit-function-return-type`: Yêu cầu kiểu trả về rõ ràng
 
 ### Import Management
+
 - ✅ `import/no-useless-path-segments`: Loại bỏ path segments không cần thiết
 - ✅ `import/no-duplicates`: Phát hiện duplicate imports
 - ✅ Import sorting tự động với Prettier
 
 ### Code Quality
+
 - ✅ `no-console`: Cấm console.log trong production
 - ✅ `no-debugger`: Cấm debugger statements
 - ✅ `no-var`: Ưu tiên let/const
@@ -158,6 +167,7 @@ module.exports = {
 - ✅ `prefer-template`: Ưu tiên template literals
 
 ### React Rules
+
 - ✅ React recommended rules
 - ✅ React Hooks rules
 - ✅ JSX accessibility (jsx-a11y)
@@ -206,23 +216,25 @@ Imports được sắp xếp theo thứ tự ưu tiên:
 ### Thêm quy tắc tùy chỉnh
 
 **.eslintrc.js:**
+
 ```javascript
 module.exports = {
-  extends: ["eslint-prettier-itstandu"],
+  extends: ['eslint-prettier-itstandu'],
   rules: {
     // Thêm quy tắc mới
-    "no-console": "warn", // Thay đổi từ error thành warn
-    "custom-rule": "error",
+    'no-console': 'warn', // Thay đổi từ error thành warn
+    'custom-rule': 'error',
 
     // Tắt quy tắc không mong muốn
-    "@typescript-eslint/no-explicit-any": "off"
-  }
+    '@typescript-eslint/no-explicit-any': 'off',
+  },
 };
 ```
 
 ### Tùy chỉnh Prettier
 
 **.prettierrc.json:**
+
 ```json
 {
   "extends": "eslint-prettier-itstandu/prettier.json",
@@ -235,24 +247,25 @@ module.exports = {
 ### Override cho thư mục cụ thể
 
 **.eslintrc.js:**
+
 ```javascript
 module.exports = {
-  extends: ["eslint-prettier-itstandu"],
+  extends: ['eslint-prettier-itstandu'],
   overrides: [
     {
-      files: ["*.test.ts", "*.test.tsx"],
+      files: ['*.test.ts', '*.test.tsx'],
       rules: {
-        "@typescript-eslint/no-explicit-any": "off",
-        "no-console": "off"
-      }
+        '@typescript-eslint/no-explicit-any': 'off',
+        'no-console': 'off',
+      },
     },
     {
-      files: ["src/migrations/*.ts"],
+      files: ['src/migrations/*.ts'],
       rules: {
-        "@typescript-eslint/explicit-function-return-type": "off"
-      }
-    }
-  ]
+        '@typescript-eslint/explicit-function-return-type': 'off',
+      },
+    },
+  ],
 };
 ```
 
@@ -317,31 +330,33 @@ Tạo file `.vscode/settings.json`:
 ## 🚨 Xử lý Conflicts
 
 ### Với Prettier
+
 Nếu có conflict giữa ESLint và Prettier:
 
 ```javascript
 // .eslintrc.js
 module.exports = {
-  extends: ["eslint-prettier-itstandu"],
+  extends: ['eslint-prettier-itstandu'],
   rules: {
     // Tắt các quy tắc ESLint conflict với Prettier
-    "arrow-body-style": "off",
-    "prefer-arrow-callback": "off"
-  }
+    'arrow-body-style': 'off',
+    'prefer-arrow-callback': 'off',
+  },
 };
 ```
 
 ### Với TypeScript Compiler
+
 Một số quy tắc có thể conflict với TS compiler:
 
 ```javascript
 // .eslintrc.js
 module.exports = {
-  extends: ["eslint-prettier-itstandu"],
+  extends: ['eslint-prettier-itstandu'],
   rules: {
     // Tắt nếu conflict với TS strict mode
-    "@typescript-eslint/no-unnecessary-type-assertion": "off"
-  }
+    '@typescript-eslint/no-unnecessary-type-assertion': 'off',
+  },
 };
 ```
 
@@ -360,7 +375,7 @@ npm install -D eslint-prettier-itstandu
 ```javascript
 // .eslintrc.js
 module.exports = {
-  extends: ["eslint-prettier-itstandu"]
+  extends: ['eslint-prettier-itstandu'],
 };
 ```
 
@@ -398,17 +413,18 @@ npm install -D eslint-prettier-itstandu
 ```javascript
 // .eslintrc.js
 module.exports = {
-  extends: ["eslint-prettier-itstandu"],
+  extends: ['eslint-prettier-itstandu'],
   rules: {
-    "class-methods-use-this": "off",
-    "@typescript-eslint/no-empty-function": "off"
-  }
+    'class-methods-use-this': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+  },
 };
 ```
 
 ## 🐛 Troubleshooting
 
 ### Lỗi "Cannot find module" với TypeScript paths
+
 Đảm bảo `tsconfig.json` có cấu hình paths đúng:
 
 ```json
@@ -423,23 +439,26 @@ module.exports = {
 ```
 
 ### Prettier không hoạt động
+
 Kiểm tra:
+
 1. File `.prettierrc.json` có tồn tại
 2. Prettier extension đã được cài đặt trong IDE
 3. Restart IDE sau khi thay đổi cấu hình
 
 ### ESLint không nhận ra React
+
 Đảm bảo có file React component trong thư mục được scan, hoặc thêm:
 
 ```javascript
 // .eslintrc.js
 module.exports = {
-  extends: ["eslint-prettier-itstandu"],
+  extends: ['eslint-prettier-itstandu'],
   settings: {
     react: {
-      version: "detect" // hoặc chỉ định version cụ thể: "18.0"
-    }
-  }
+      version: 'detect', // hoặc chỉ định version cụ thể: "18.0"
+    },
+  },
 };
 ```
 
