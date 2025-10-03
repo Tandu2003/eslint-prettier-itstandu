@@ -3,11 +3,21 @@
   "version": "1.0.0",
   "description": "All-in-one ESLint + Prettier config for NestJS, Next.js, React, Vite projects",
   "main": "index.js",
-  "files": [
-    "index.js",
-    "prettier.json"
-  ],
+  "files": ["index.js", "prettier.json"],
   "license": "MIT",
+  "author": "Tandu2003 <tandu542003@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tandu2003/eslint-prettier-itstandu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tandu2003/eslint-prettier-itstandu/issues"
+  },
+  "homepage": "https://github.com/Tandu2003/eslint-prettier-itstandu#readme",
+  "scripts": {
+    "release": "npm version patch && npm publish --access public",
+    "lint": "eslint . --ext .js,.ts,.tsx"
+  },
   "dependencies": {
     "eslint": "^9.0.0",
     "prettier": "^3.0.0",
