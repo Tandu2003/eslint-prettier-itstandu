@@ -60,6 +60,7 @@ Bạn có **nhiều cách** để sử dụng package này tùy theo nhu cầu d
 Package này cung cấp **3 mức độ kiểm tra ESLint** khác nhau:
 
 ### 🔥 **Mức Cao (High) - Mặc định** (Khuyên dùng cho dự án production)
+
 ```javascript
 // .eslintrc.js
 module.exports = {
@@ -68,6 +69,7 @@ module.exports = {
 ```
 
 ### ⚡ **Mức Vừa (Medium) - Phù hợp với dự án đang phát triển**
+
 ```javascript
 // .eslintrc.js
 module.exports = {
@@ -76,6 +78,7 @@ module.exports = {
 ```
 
 ### 🌱 **Mức Thấp (Low) - Chỉ những quy tắc cơ bản**
+
 ```javascript
 // .eslintrc.js
 module.exports = {
@@ -85,11 +88,11 @@ module.exports = {
 
 ## 🔍 So Sánh Các Mức Độ
 
-| Mức Độ | Độ Nghiêm Ngặt | Sử Dụng Khi | Quy Tắc Chính |
-|--------|---------------|-------------|--------------|
-| 🔥 **High** | Rất nghiêm ngặt | Production, dự án lớn | Tất cả quy tắc TS nghiêm ngặt, import sorting, chất lượng cao |
-| ⚡ **Medium** | Trung bình | Development, dự án vừa | Bỏ một số quy tắc quá nghiêm ngặt như no-explicit-any, unsafe-* |
-| 🌱 **Low** | Cơ bản | Learning, PoC, dự án nhỏ | Chỉ quy tắc cơ bản: no-console, prefer-const, prettier |
+| Mức Độ        | Độ Nghiêm Ngặt  | Sử Dụng Khi              | Quy Tắc Chính                                                    |
+| ------------- | --------------- | ------------------------ | ---------------------------------------------------------------- |
+| 🔥 **High**   | Rất nghiêm ngặt | Production, dự án lớn    | Tất cả quy tắc TS nghiêm ngặt, import sorting, chất lượng cao    |
+| ⚡ **Medium** | Trung bình      | Development, dự án vừa   | Bỏ một số quy tắc quá nghiêm ngặt như no-explicit-any, unsafe-\* |
+| 🌱 **Low**    | Cơ bản          | Learning, PoC, dự án nhỏ | Chỉ quy tắc cơ bản: no-console, prefer-const, prettier           |
 
 ### Ví Dụ Sự Khác Biệt:
 
@@ -287,6 +290,7 @@ module.exports = {
 #### ⚡ Mức Vừa (Medium) - Quy tắc trung bình
 
 Các quy tắc tương tự mức cao nhưng bỏ:
+
 - ❌ `@typescript-eslint/no-explicit-any` (cho phép `any`)
 - ❌ `@typescript-eslint/no-floating-promises` (cho phép promise không handle)
 - ❌ `@typescript-eslint/no-unsafe-*` (ít kiểm tra type safety)
@@ -296,6 +300,7 @@ Các quy tắc tương tự mức cao nhưng bỏ:
 #### 🌱 Mức Thấp (Low) - Quy tắc cơ bản
 
 Chỉ giữ lại:
+
 - ✅ ESLint recommended rules
 - ✅ `@typescript-eslint/no-unused-vars` (warn thay vì error)
 - ✅ `no-console`, `no-debugger` (warn thay vì error)
