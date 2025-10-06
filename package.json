@@ -15,8 +15,7 @@
     "eslint.config.js",
     "eslint-config.js",
     "prettier.json",
-    "prettier-config.js",
-    "examples/"
+    "prettier-config.js"
   ],
   "license": "MIT",
   "author": "Tandu2003 <tandu542003@gmail.com>",
