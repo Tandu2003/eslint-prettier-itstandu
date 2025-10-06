@@ -1,4 +1,4 @@
-# Tạo file eslint.config.js mẫu cho dự án của bạn
+// # Tạo file eslint.config.js mẫu cho dự án của bạn
 
 import js from '@eslint/js';
 import globals from 'globals';
