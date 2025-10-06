@@ -23,6 +23,9 @@ module.exports = [
       'index.js',
       'prettier-config.js',
       'eslint-config-*.js',
+      'node_modules/**',
+      'dist/**',
+      'build/**',
     ],
     languageOptions: {
       parser: tsparser,
@@ -33,6 +36,13 @@ module.exports = [
       },
       globals: {
         // Add any global variables if needed
+        require: 'readonly',
+        module: 'readonly',
+        process: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        exports: 'readonly',
+        global: 'readonly',
       },
     },
     plugins: {

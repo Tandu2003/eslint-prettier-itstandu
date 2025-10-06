@@ -35,7 +35,7 @@
   "homepage": "https://github.com/Tandu2003/eslint-prettier-itstandu#readme",
   "scripts": {
     "release": "npm version patch && npm publish --access public",
-    "lint": "eslint . --ext .js,.ts,.tsx"
+    "lint": "eslint index.js"
   },
   "dependencies": {
     "eslint": "^9.36.0",
