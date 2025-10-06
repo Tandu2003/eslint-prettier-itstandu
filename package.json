@@ -1,12 +1,21 @@
 {
   "name": "eslint-prettier-itstandu",
   "version": "1.0.1",
-  "description": "All-in-one ESLint + Prettier config for NestJS, Next.js, React, Vite projects",
+  "description": "ESLint and Prettier configs for NestJS, Next.js, React, Vite projects - use separately or together",
   "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./eslint": "./eslint-config.js",
+    "./prettier": "./prettier-config.js",
+    "./eslint-config": "./eslint-config.js",
+    "./prettier-config": "./prettier-config.js"
+  },
   "files": [
     "index.js",
     "eslint.config.js",
-    "prettier.json"
+    "eslint-config.js",
+    "prettier.json",
+    "prettier-config.js"
   ],
   "license": "MIT",
   "author": "Tandu2003 <tandu542003@gmail.com>",

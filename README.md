@@ -5,6 +5,12 @@
 
 Một package cấu hình ESLint và Prettier toàn diện cho các dự án NestJS, Next.js, React và Vite. Cung cấp cấu hình sẵn sàng sử dụng với các quy tắc nghiêm ngặt về chất lượng code, TypeScript và formatting nhất quán.
 
+**Tính năng nổi bật:**
+
+- ✅ **Linh hoạt**: Sử dụng cả ESLint + Prettier cùng lúc, hoặc chỉ một trong hai
+- ✅ **Tách biệt**: Import riêng ESLint config hoặc Prettier config khi cần
+- ✅ **Đầy đủ**: Hỗ trợ TypeScript, React, import sorting, và nhiều framework khác
+
 ## ✨ Tính năng
 
 ### 🔧 ESLint Configuration
@@ -43,7 +49,47 @@ pnpm add -D eslint-prettier-itstandu
 
 ## ⚙️ Cấu hình
 
-### 1. ESLint Configuration (.eslintrc.js)
+### 🔀 Cách sử dụng
+
+Bạn có **3 cách** để sử dụng package này:
+
+#### 1. **Sử dụng cả ESLint + Prettier cùng lúc** (Khuyên dùng)
+
+```javascript
+// .eslintrc.js
+module.exports = {
+  extends: ['eslint-prettier-itstandu'],
+};
+```
+
+```json
+// .prettierrc.json
+{
+  "extends": "eslint-prettier-itstandu/prettier.json"
+}
+```
+
+#### 2. **Chỉ sử dụng ESLint config riêng biệt**
+
+```javascript
+// .eslintrc.js
+module.exports = {
+  extends: ['eslint-prettier-itstandu/eslint'],
+};
+```
+
+#### 3. **Chỉ sử dụng Prettier config riêng biệt**
+
+```json
+// .prettierrc.json
+{
+  "extends": "eslint-prettier-itstandu/prettier-config"
+}
+```
+
+### Cấu hình chi tiết
+
+#### 1. ESLint Configuration (.eslintrc.js)
 
 Tạo file `.eslintrc.js` trong thư mục root của dự án:
 
@@ -53,13 +99,21 @@ module.exports = {
 };
 ```
 
-### 2. Prettier Configuration (.prettierrc.json)
+#### 2. Prettier Configuration (.prettierrc.json)
 
 Tạo file `.prettierrc.json` trong thư mục root của dự án:
 
 ```json
 {
   "extends": "eslint-prettier-itstandu/prettier.json"
+}
+```
+
+**Hoặc sử dụng Prettier config riêng biệt:**
+
+```json
+{
+  "extends": "eslint-prettier-itstandu/prettier-config"
 }
 ```
 
@@ -373,7 +427,7 @@ npm install -D eslint-prettier-itstandu
 **Cấu hình files:**
 
 ```javascript
-// .eslintrc.js
+// .eslintrc.js - Cách 1: Sử dụng cả ESLint + Prettier
 module.exports = {
   extends: ['eslint-prettier-itstandu'],
 };
@@ -383,6 +437,24 @@ module.exports = {
 // .prettierrc.json
 {
   "extends": "eslint-prettier-itstandu/prettier.json"
+}
+```
+
+**Hoặc chỉ sử dụng ESLint riêng biệt:**
+
+```javascript
+// .eslintrc.js - Cách 2: Chỉ ESLint
+module.exports = {
+  extends: ['eslint-prettier-itstandu/eslint'],
+};
+```
+
+**Hoặc chỉ sử dụng Prettier riêng biệt:**
+
+```json
+// .prettierrc.json - Cách 3: Chỉ Prettier
+{
+  "extends": "eslint-prettier-itstandu/prettier-config"
 }
 ```
 
