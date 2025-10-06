@@ -98,6 +98,36 @@ module.exports = {
 }
 ```
 
+## 🛠️ Troubleshooting
+
+### ESLint v9 không tìm thấy eslint.config.js
+
+Nếu bạn gặp lỗi "ESLint couldn't find an eslint.config.(js|mjs|cjs) file", hãy tạo file `eslint.config.js` trong thư mục gốc dự án:
+
+```javascript
+// eslint.config.js
+import js from '@eslint/js';
+
+export default [
+  js.configs.recommended,
+  {
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+    },
+  },
+  {
+    ignores: ['node_modules/**', 'dist/**'],
+  },
+];
+```
+
+Sau đó chạy:
+```bash
+npm install eslint
+npx eslint .
+```
+
 ## 📄 License
 
 MIT License
