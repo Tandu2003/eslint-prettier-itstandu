@@ -343,6 +343,121 @@ Thêm vào `package.json`:
 }
 ```
 
+## 🔗 Git Hooks với Husky (Khuyên dùng)
+
+Để tự động chạy linting và formatting trước khi commit, hãy cài đặt và cấu hình Husky trong dự án của bạn:
+
+### 1. Cài đặt Husky và lint-staged
+
+```bash
+npm install -D husky lint-staged
+# hoặc
+yarn add -D husky lint-staged
+```
+
+### 2. Khởi tạo Husky
+
+```bash
+npx husky install
+```
+
+### 3. Thêm các git hooks
+
+```bash
+# Pre-commit hook
+npx husky add .husky/pre-commit "npx lint-staged"
+
+# Pre-push hook (tùy chọn)
+npx husky add .husky/pre-push "npm run typecheck"
+```
+
+### 4. Cấu hình lint-staged trong package.json
+
+```json
+{
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix --cache",
+      "prettier --write"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ]
+  }
+}
+```
+
+### 5. Các script mẫu cho package.json
+
+```json
+{
+  "scripts": {
+    "prepare": "husky install",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --cache",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix --cache",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "check:all": "npm run typecheck && npm run lint && npm run format:check",
+    "fix:all": "npm run lint:fix && npm run format"
+  }
+}
+```
+
+### 6. Cấu hình VS Code để tự động format on save
+
+```json
+// .vscode/settings.json
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
+```
+
+## 🎯 Ví dụ hoàn chỉnh với Husky
+
+```bash
+# Tạo dự án mới
+npx create-next-app@latest my-app --typescript
+cd my-app
+
+# Cài đặt dependencies
+npm install -D eslint-prettier-itstandu husky lint-staged
+
+# Khởi tạo husky
+npx husky install
+
+# Thêm pre-commit hook
+npx husky add .husky/pre-commit "npx lint-staged"
+
+# Cấu hình package.json
+npm pkg set scripts.prepare="husky install"
+npm pkg set "lint-staged"='{"*.{js,jsx,ts,tsx}":["eslint --fix","prettier --write"],"*.{json,css,md}":["prettier --write"]}'
+
+# Tạo file .eslintrc.js
+echo 'module.exports = { extends: ["eslint-prettier-itstandu"] };' > .eslintrc.js
+
+# Tạo file .prettierrc.json
+echo '{ "extends": "eslint-prettier-itstandu/prettier.json" }' > .prettierrc.json
+```
+
+Bây giờ mọi commit sẽ tự động chạy linting và formatting! 🚀
+
+## 📁 Examples
+
+Thư mục `examples/` chứa các file cấu hình mẫu và script setup để bạn có thể sử dụng ngay:
+
+- **`.eslintrc.js`** - ESLint configuration mẫu
+- **`.prettierrc.json`** - Prettier configuration mẫu
+- **`package.json`** - Package.json với Husky và lint-staged
+- **`setup-husky.sh`** - Script tự động thiết lập Husky
+
+Xem chi tiết trong [examples/README.md](examples/README.md)
+
 ## 🔧 IDE Integration
 
 ### VS Code

@@ -1,0 +1,6 @@
+{
+  "extends": "eslint-prettier-itstandu/prettier.json",
+  // You can override specific prettier options here if needed
+  // "printWidth": 120,
+  // "tabWidth": 4
+}
