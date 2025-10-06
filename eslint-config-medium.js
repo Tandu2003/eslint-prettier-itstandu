@@ -1,19 +1,31 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const js = require("@eslint/js");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const tseslint = require("@typescript-eslint/eslint-plugin");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const tsparser = require("@typescript-eslint/parser");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const importPlugin = require("eslint-plugin-import");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const prettierPlugin = require("eslint-plugin-prettier");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const reactPlugin = require("eslint-plugin-react");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const reactHooksPlugin = require("eslint-plugin-react-hooks");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const jsxA11yPlugin = require("eslint-plugin-jsx-a11y");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const prettierConfig = require("eslint-config-prettier");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require("fs");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require("path");
 
 // Check if tsconfig.json exists
 const tsconfigPath = path.join(process.cwd(), "tsconfig.json");
 const hasTsConfig = fs.existsSync(tsconfigPath);
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 module.exports = [
   // Base configuration for all files
   {
