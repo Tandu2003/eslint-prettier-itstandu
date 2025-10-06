@@ -3,10 +3,12 @@
 [![npm version](https://badge.fury.io/js/eslint-prettier-itstandu.svg)](https://badge.fury.io/js/eslint-prettier-itstandu)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Một package cấu hình ESLint và Prettier toàn diện cho các dự án NestJS, Next.js, React và Vite. Cung cấp cấu hình sẵn sàng sử dụng với các quy tắc nghiêm ngặt về chất lượng code, TypeScript và formatting nhất quán.
+Một package cấu hình ESLint và Prettier toàn diện cho các dự án NestJS, Next.js, React và Vite. Cung cấp cấu hình sẵn sàng sử dụng với **3 mức độ kiểm tra** khác nhau phù hợp với từng loại dự án.
 
 **Tính năng nổi bật:**
 
+- ✅ **3 mức độ ESLint**: Cao (High), Vừa (Medium), Thấp (Low) phù hợp với từng dự án
+- ✅ **Mặc định cao**: Cấu hình mặc định sử dụng mức độ nghiêm ngặt nhất
 - ✅ **Linh hoạt**: Sử dụng cả ESLint + Prettier cùng lúc, hoặc chỉ một trong hai
 - ✅ **Tách biệt**: Import riêng ESLint config hoặc Prettier config khi cần
 - ✅ **Đầy đủ**: Hỗ trợ TypeScript, React, import sorting, và nhiều framework khác
@@ -51,7 +53,63 @@ pnpm add -D eslint-prettier-itstandu
 
 ### 🔀 Cách sử dụng
 
-Bạn có **3 cách** để sử dụng package này:
+Bạn có **nhiều cách** để sử dụng package này tùy theo nhu cầu dự án:
+
+## 📊 3 Mức Độ ESLint
+
+Package này cung cấp **3 mức độ kiểm tra ESLint** khác nhau:
+
+### 🔥 **Mức Cao (High) - Mặc định** (Khuyên dùng cho dự án production)
+```javascript
+// .eslintrc.js
+module.exports = {
+  extends: ['eslint-prettier-itstandu'], // hoặc 'eslint-prettier-itstandu/eslint-high'
+};
+```
+
+### ⚡ **Mức Vừa (Medium) - Phù hợp với dự án đang phát triển**
+```javascript
+// .eslintrc.js
+module.exports = {
+  extends: ['eslint-prettier-itstandu/eslint-medium'],
+};
+```
+
+### 🌱 **Mức Thấp (Low) - Chỉ những quy tắc cơ bản**
+```javascript
+// .eslintrc.js
+module.exports = {
+  extends: ['eslint-prettier-itstandu/eslint-low'],
+};
+```
+
+## 🔍 So Sánh Các Mức Độ
+
+| Mức Độ | Độ Nghiêm Ngặt | Sử Dụng Khi | Quy Tắc Chính |
+|--------|---------------|-------------|--------------|
+| 🔥 **High** | Rất nghiêm ngặt | Production, dự án lớn | Tất cả quy tắc TS nghiêm ngặt, import sorting, chất lượng cao |
+| ⚡ **Medium** | Trung bình | Development, dự án vừa | Bỏ một số quy tắc quá nghiêm ngặt như no-explicit-any, unsafe-* |
+| 🌱 **Low** | Cơ bản | Learning, PoC, dự án nhỏ | Chỉ quy tắc cơ bản: no-console, prefer-const, prettier |
+
+### Ví Dụ Sự Khác Biệt:
+
+```javascript
+// ✅ Được phép ở mức LOW và MEDIUM
+const data: any = getData();
+
+// ❌ Chỉ được phép ở mức HIGH
+const data: string = getData();
+```
+
+```javascript
+// ✅ Được phép ở mức LOW và MEDIUM
+console.log('Debug info');
+
+// ❌ Chỉ được phép ở mức HIGH
+console.log('Debug info'); // Báo lỗi
+```
+
+## 🔧 Các Cách Sử Dụng Khác
 
 #### 1. **Sử dụng cả ESLint + Prettier cùng lúc** (Khuyên dùng)
 
@@ -94,8 +152,28 @@ module.exports = {
 Tạo file `.eslintrc.js` trong thư mục root của dự án:
 
 ```javascript
+// Mặc định sử dụng mức độ CAO (High)
 module.exports = {
-  extends: ['eslint-prettier-itstandu'],
+  extends: ['eslint-prettier-itstandu'], // hoặc 'eslint-prettier-itstandu/eslint-high'
+};
+```
+
+**Chọn mức độ phù hợp với dự án của bạn:**
+
+```javascript
+// Mức Cao - Nghiêm ngặt nhất (Production)
+module.exports = {
+  extends: ['eslint-prettier-itstandu/eslint-high'],
+};
+
+// Mức Vừa - Linh hoạt hơn (Development)
+module.exports = {
+  extends: ['eslint-prettier-itstandu/eslint-medium'],
+};
+
+// Mức Thấp - Chỉ quy tắc cơ bản (Learning/PoC)
+module.exports = {
+  extends: ['eslint-prettier-itstandu/eslint-low'],
 };
 ```
 
@@ -193,7 +271,9 @@ module.exports = {
 
 ## 📋 Quy tắc ESLint được bao gồm
 
-### TypeScript Rules (Nghiêm ngặt)
+### 🔥 Mức Cao (High) - Quy tắc đầy đủ
+
+#### TypeScript Rules (Nghiêm ngặt nhất)
 
 - ✅ `@typescript-eslint/no-non-null-assertion`: Cấm sử dụng `!`
 - ✅ `@typescript-eslint/no-explicit-any`: Cấm sử dụng `any`
@@ -204,13 +284,32 @@ module.exports = {
 - ✅ `@typescript-eslint/no-unused-vars`: Phát hiện biến không sử dụng
 - ✅ `@typescript-eslint/explicit-function-return-type`: Yêu cầu kiểu trả về rõ ràng
 
-### Import Management
+#### ⚡ Mức Vừa (Medium) - Quy tắc trung bình
+
+Các quy tắc tương tự mức cao nhưng bỏ:
+- ❌ `@typescript-eslint/no-explicit-any` (cho phép `any`)
+- ❌ `@typescript-eslint/no-floating-promises` (cho phép promise không handle)
+- ❌ `@typescript-eslint/no-unsafe-*` (ít kiểm tra type safety)
+- ❌ `@typescript-eslint/explicit-function-return-type` (không yêu cầu kiểu trả về)
+- ⚠️ `no-console` chuyển từ `error` thành `warn`
+
+#### 🌱 Mức Thấp (Low) - Quy tắc cơ bản
+
+Chỉ giữ lại:
+- ✅ ESLint recommended rules
+- ✅ `@typescript-eslint/no-unused-vars` (warn thay vì error)
+- ✅ `no-console`, `no-debugger` (warn thay vì error)
+- ✅ `no-var`, `prefer-const`
+- ✅ `no-duplicate-imports`
+- ✅ Prettier integration
+
+#### Import Management (Mức Cao)
 
 - ✅ `import/no-useless-path-segments`: Loại bỏ path segments không cần thiết
 - ✅ `import/no-duplicates`: Phát hiện duplicate imports
 - ✅ Import sorting tự động với Prettier
 
-### Code Quality
+#### Code Quality (Mức Cao)
 
 - ✅ `no-console`: Cấm console.log trong production
 - ✅ `no-debugger`: Cấm debugger statements
@@ -220,7 +319,9 @@ module.exports = {
 - ✅ `object-shorthand`: Sử dụng shorthand object syntax
 - ✅ `prefer-template`: Ưu tiên template literals
 
-### React Rules
+**Lưu ý:** Các quy tắc trên chỉ áp dụng cho mức độ Cao. Các mức độ thấp hơn sẽ có ít quy tắc hơn để phù hợp với giai đoạn phát triển khác nhau.
+
+#### React Rules (Mức Cao)
 
 - ✅ React recommended rules
 - ✅ React Hooks rules
@@ -427,9 +528,9 @@ npm install -D eslint-prettier-itstandu
 **Cấu hình files:**
 
 ```javascript
-// .eslintrc.js - Cách 1: Sử dụng cả ESLint + Prettier
+// .eslintrc.js - Mức CAO (High) - Khuyên dùng cho production
 module.exports = {
-  extends: ['eslint-prettier-itstandu'],
+  extends: ['eslint-prettier-itstandu'], // hoặc 'eslint-prettier-itstandu/eslint-high'
 };
 ```
 
@@ -440,19 +541,29 @@ module.exports = {
 }
 ```
 
-**Hoặc chỉ sử dụng ESLint riêng biệt:**
+**Các mức độ ESLint khác:**
 
 ```javascript
-// .eslintrc.js - Cách 2: Chỉ ESLint
+// .eslintrc.js - Mức VỪA (Medium) - Phù hợp development
 module.exports = {
-  extends: ['eslint-prettier-itstandu/eslint'],
+  extends: ['eslint-prettier-itstandu/eslint-medium'],
+};
+
+// .eslintrc.js - Mức THẤP (Low) - Chỉ quy tắc cơ bản
+module.exports = {
+  extends: ['eslint-prettier-itstandu/eslint-low'],
 };
 ```
 
-**Hoặc chỉ sử dụng Prettier riêng biệt:**
+**Các cách sử dụng khác:**
 
-```json
-// .prettierrc.json - Cách 3: Chỉ Prettier
+```javascript
+// Chỉ ESLint riêng biệt (mức cao)
+module.exports = {
+  extends: ['eslint-prettier-itstandu/eslint'],
+};
+
+// Chỉ Prettier riêng biệt
 {
   "extends": "eslint-prettier-itstandu/prettier-config"
 }

@@ -6,14 +6,20 @@
   "exports": {
     ".": "./index.js",
     "./eslint": "./eslint-config.js",
-    "./prettier": "./prettier-config.js",
     "./eslint-config": "./eslint-config.js",
+    "./eslint-high": "./eslint-config-high.js",
+    "./eslint-medium": "./eslint-config-medium.js",
+    "./eslint-low": "./eslint-config-low.js",
+    "./prettier": "./prettier-config.js",
     "./prettier-config": "./prettier-config.js"
   },
   "files": [
     "index.js",
     "eslint.config.js",
     "eslint-config.js",
+    "eslint-config-high.js",
+    "eslint-config-medium.js",
+    "eslint-config-low.js",
     "prettier.json",
     "prettier-config.js"
   ],
