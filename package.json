@@ -1,6 +1,6 @@
 {
   "name": "eslint-prettier-itstandu",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "ESLint and Prettier configs for NestJS, Next.js, React, Vite projects - use separately or together",
   "main": "index.js",
   "exports": {
